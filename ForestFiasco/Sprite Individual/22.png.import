@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/22.png-9102b2cb07ae5f1bf58ac6fd1d0c917d.stex"
+
+[deps]
+
+source_file="res://Sprite Individual/22.png"
+source_md5="c1be05a821326716951d40796f7aeb4e"
+
+dest_files=[ "res://.import/22.png-9102b2cb07ae5f1bf58ac6fd1d0c917d.stex" ]
+dest_md5="bf737b1e010b5ebe6d878f9aa9b17edb"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
