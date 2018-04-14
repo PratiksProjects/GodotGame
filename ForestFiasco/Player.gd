@@ -23,7 +23,9 @@ func _process(delta):
         $AnimatedSprite.stop()
     position += velocity * delta
     #position.x = clamp(position.x, 0, screensize.x)
+    position.x = clamp(position.x, 0, 2000)
     position.y = clamp(position.y, 0, 250)
+	
     if velocity.x != 0:
         $AnimatedSprite.animation = "right"
         $AnimatedSprite.flip_v = false
