@@ -7,10 +7,7 @@ path="res://.import/Forest_layer_full.jpg-dc0b6ab199520c24e1e81cbe9d5cbc96.stex"
 [deps]
 
 source_file="res://Forest_layer_full.jpg"
-source_md5="8aba58663c327762c880c143549910f2"
-
 dest_files=[ "res://.import/Forest_layer_full.jpg-dc0b6ab199520c24e1e81cbe9d5cbc96.stex" ]
-dest_md5="e3beadcebd8ac70fbf6c8b8204976965"
 
 [params]
 

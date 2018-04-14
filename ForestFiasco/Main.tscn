@@ -7,13 +7,11 @@
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node" index="0"]
-
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 Gobbo = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
-
 position = Vector2( 79.9153, 83.6334 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
@@ -25,7 +23,6 @@ __meta__ = {
 }
 
 [node name="Sprite2" type="Sprite" parent="." index="1"]
-
 position = Vector2( 1101.24, 82.6335 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
@@ -37,7 +34,6 @@ __meta__ = {
 }
 
 [node name="Sprite3" type="Sprite" parent="." index="2"]
-
 position = Vector2( 2170.93, 81.27 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
@@ -49,13 +45,11 @@ __meta__ = {
 }
 
 [node name="Player" parent="." index="3" instance=ExtResource( 4 )]
-
 position = Vector2( 50, 250 )
 scale = Vector2( 1, 1 )
 _sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform" ]
 
 [node name="StartPosition" type="Position2D" parent="." index="4"]
-
 position = Vector2( 50, 250 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -63,7 +57,6 @@ __meta__ = {
 }
 
 [node name="Area2D" type="Area2D" parent="." index="5"]
-
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -77,14 +70,10 @@ __meta__ = {
 }
 
 [node name="RigidBody2D" parent="Area2D" index="0" instance=ExtResource( 2 )]
-
 position = Vector2( 150, 200 )
 _sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility" ]
 
 [node name="TitleScreen" parent="." index="6" instance=ExtResource( 5 )]
 
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]
-
 [connection signal="start_game" from="TitleScreen" to="." method="new_game"]
-
-

@@ -7,10 +7,7 @@ path="res://.import/parallax-forest-front-trees.png-d06e855477f06cff6b8ab5df87b6
 [deps]
 
 source_file="res://background/parallax-forest-front-trees.png"
-source_md5="90eeed8bb9545a3dda46c2b04cf44c1b"
-
 dest_files=[ "res://.import/parallax-forest-front-trees.png-d06e855477f06cff6b8ab5df87b6114d.stex" ]
-dest_md5="504af522bcbbcb97ce79d8bab578fdc2"
 
 [params]
 

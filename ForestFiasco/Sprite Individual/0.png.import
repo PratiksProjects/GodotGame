@@ -7,10 +7,7 @@ path="res://.import/0.png-af8c537532a355dd2bcb2205abed2dc2.stex"
 [deps]
 
 source_file="res://Sprite Individual/0.png"
-source_md5="57bc63272e6fb38355b5b6e42cf639ca"
-
 dest_files=[ "res://.import/0.png-af8c537532a355dd2bcb2205abed2dc2.stex" ]
-dest_md5="3723a6c7e146c879894c2c45cb6d68d5"
 
 [params]
 

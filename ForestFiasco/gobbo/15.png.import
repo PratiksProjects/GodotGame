@@ -7,10 +7,7 @@ path="res://.import/15.png-fe126df45cdb2494203f31d576fa2c37.stex"
 [deps]
 
 source_file="res://gobbo/15.png"
-source_md5="42f1802ff11e308a6beab236ae076844"
-
 dest_files=[ "res://.import/15.png-fe126df45cdb2494203f31d576fa2c37.stex" ]
-dest_md5="e87fb8b3cb75c560ee7997b64efffedb"
 
 [params]
 

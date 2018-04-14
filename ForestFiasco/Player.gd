@@ -11,8 +11,12 @@ func _ready():
     
     
 func _process(delta):
-    print(velocity.y)
-    velocity.y += delta * GRAVITY
+
+#    velocity.y += delta * GRAVITY
+    var new = Phys.new()
+    var y=new.grav(velocity.y,delta,GRAVITY)
+#    new.grav(velocity.y,delta,GRAVITY)
+    velocity.y=y
     if Input.is_action_pressed("ui_right"):
         velocity.x += 100
     if Input.is_action_pressed("ui_left"):
