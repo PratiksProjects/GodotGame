@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/phys.windows.tools.32.obj-79739046574885677d29a78ddfa6e23c.mesh"
+
+[deps]
+
+files=[ "res://.import/phys.windows.tools.32.obj-79739046574885677d29a78ddfa6e23c.mesh" ]
+
+source_file="res://Modules/phys/phys.windows.tools.32.obj"
+dest_files=[ "res://.import/phys.windows.tools.32.obj-79739046574885677d29a78ddfa6e23c.mesh", "res://.import/phys.windows.tools.32.obj-79739046574885677d29a78ddfa6e23c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
