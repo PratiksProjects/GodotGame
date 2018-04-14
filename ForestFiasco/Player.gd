@@ -2,7 +2,7 @@ extends Area2D
 signal hit
 export (int) var SPEED
 var screensize
-const GRAVITY = 500
+const GRAVITY = 200
 var velocity = Vector2() # the player's movement vector
 var Jumped=0
 
@@ -21,7 +21,7 @@ func _process(delta):
         pass
     if Input.is_action_pressed("ui_up"): 
         if Jumped==0:
-            velocity.y -= delta*GRAVITY*220
+            velocity.y -= delta*GRAVITY*800
             Jumped=1
     
     if velocity.y > 90 && velocity.y<110 && position.y>=248 && position.y<=252:
