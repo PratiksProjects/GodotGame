@@ -1,0 +1,17 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/summator.windows.tools.32.obj-f7d024e527a71e9131c410d12ee9940c.mesh"
+
+[deps]
+
+files=[ "res://.import/summator.windows.tools.32.obj-f7d024e527a71e9131c410d12ee9940c.mesh" ]
+
+source_file="res://Modules/phys/summator.windows.tools.32.obj"
+dest_files=[ "res://.import/summator.windows.tools.32.obj-f7d024e527a71e9131c410d12ee9940c.mesh", "res://.import/summator.windows.tools.32.obj-f7d024e527a71e9131c410d12ee9940c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
