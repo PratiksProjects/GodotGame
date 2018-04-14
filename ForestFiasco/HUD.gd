@@ -20,6 +20,8 @@ func show_message(text):
     $MessageTimer.start()
 
 func _ready():
+    $MessageLabel.text = "Forest Fiasco!"
+    $CreatorLabel.text = "Created By: Milo Pan, Pratik Sharma, and Brandon Weiner"
     # Called every time the node is added to the scene.
     # Initialization here
     pass
@@ -32,6 +34,9 @@ func _ready():
 
 func _on_Button_pressed():
     $Button.hide()
+    $MessageLabel.hide()
+    $CreatorLabel.hide()
+    $CanvasLayer/ColorRect.hide()
     emit_signal("start_game")
     
 

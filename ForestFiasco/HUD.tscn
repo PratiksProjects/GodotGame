@@ -17,10 +17,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 257.0
-margin_top = 126.0
-margin_right = 377.0
-margin_bottom = 206.0
+margin_left = 474.0
+margin_top = 225.0
+margin_right = 594.0
+margin_bottom = 305.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -44,27 +44,80 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 95.0
-margin_top = 79.0
-margin_right = 756.0
-margin_bottom = 434.0
+margin_left = 358.0
+margin_top = 329.0
+margin_right = 714.0
+margin_bottom = 376.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_fonts", "custom_styles" ]
 
-[node name="MessageTimer" type="Timer" parent="." index="2"]
+[node name="CreatorLabel" type="Label" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 334.0
+margin_top = 372.0
+margin_right = 746.0
+margin_bottom = 470.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0.9375, 0.102539, 0.180817, 1 )
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="MessageTimer" type="Timer" parent="." index="3"]
 
 process_mode = 1
 wait_time = 2.0
 one_shot = true
 autostart = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
+
+layer = 0
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
+
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -95.0
+margin_top = -175.0
+margin_right = 1905.0
+margin_bottom = 1135.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+_sections_unfolded = [ "Visibility" ]
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 
