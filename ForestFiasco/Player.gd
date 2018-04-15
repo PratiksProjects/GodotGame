@@ -5,6 +5,7 @@ var screensize
 const GRAVITY = 200
 var velocity = Vector2() # the player's movement vector
 var Jumped=0
+var onFloor=1
 
 func _ready():
     screensize = get_viewport_rect().size
@@ -28,7 +29,7 @@ func _process(delta):
             velocity.y -= delta*GRAVITY*800
             Jumped=1
     
-    if velocity.y > 90 && velocity.y<110 && position.y>=248 && position.y<=252:
+    if velocity.y > 90 && velocity.y<110:
         Jumped=0
 
     if velocity.length() > 0:
@@ -57,9 +58,21 @@ func _process(delta):
     velocity.x = 0
 
 func _on_Player_body_entered(body):
-    hide()
-    emit_signal("hit")
-    $CollisionShape2D.disabled = true
+    if(body.get_name() == "gobboChild"):
+        hide()
+        emit_signal("hit")
+    elif(body.get_name() == "platformChild"):
+        velocity.y -= GRAVITY
+    else:
+        print("not gobbo or platform")
+    #$CollisionShape2D.disabled = true
+    
+#func overlaps_body(body):
+#    if(body.get_name() == "platformChild"):
+#        velocity.y -= GRAVITY
+#    else:
+#        print("not gobbo or platform")
+#    $CollisionShape2D.disabled = true
     
 func start(pos):
     position = pos
