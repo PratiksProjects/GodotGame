@@ -3,11 +3,11 @@
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Gobbo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://try.png" type="Texture" id=3]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://platform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=6]
 
-[node name="Main" type="Node" index="0"]
+[node name="Main" type="Node"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 Gobbo = ExtResource( 2 )
@@ -46,19 +46,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." index="3" instance=ExtResource( 4 )]
-position = Vector2( 50, 250 )
-scale = Vector2( 1, 1 )
-_sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform" ]
-
-[node name="StartPosition" type="Position2D" parent="." index="4"]
+[node name="StartPosition" type="Position2D" parent="." index="3"]
 position = Vector2( 50, 250 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="gobbo" type="Area2D" parent="." index="5"]
+[node name="gobbo" type="Area2D" parent="." index="4"]
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -75,9 +70,9 @@ __meta__ = {
 position = Vector2( 150, 200 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility" ]
 
-[node name="TitleScreen" parent="." index="6" instance=ExtResource( 5 )]
+[node name="TitleScreen" parent="." index="5" instance=ExtResource( 4 )]
 
-[node name="platform" type="Area2D" parent="." index="7"]
+[node name="platform" type="Area2D" parent="." index="6"]
 position = Vector2( 204.998, 251.726 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -89,7 +84,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Audio Bus", "Collision" ]
 
-[node name="platformChild" parent="platform" index="0" instance=ExtResource( 6 )]
+[node name="platformChild" parent="platform" index="0" instance=ExtResource( 5 )]
 position = Vector2( 479.334, 15.0733 )
 collision_mask = 0
 mode = 3
@@ -97,5 +92,10 @@ mass = 0.01
 gravity_scale = 0.0
 _sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear" ]
 
-[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
+[node name="Player" parent="." index="7" instance=ExtResource( 6 )]
+position = Vector2( 50, 250 )
+scale = Vector2( 1, 1 )
+_sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform" ]
+
 [connection signal="start_game" from="TitleScreen" to="." method="new_game"]
+[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
