@@ -6,6 +6,7 @@ const GRAVITY = 200
 var velocity = Vector2() # the player's movement vector
 var Jumped=0
 var onFloor=1
+var stat = Hpmp.new()
 
 func _ready():
     screensize = get_viewport_rect().size
@@ -16,7 +17,6 @@ func _process(delta):
 #    velocity.y += delta * GRAVITY
     var new = Phys.new()
     var y=new.grav(velocity.y,delta,GRAVITY)
-#    new.grav(velocity.y,delta,GRAVITY)
     velocity.y=y
     if Input.is_action_pressed("ui_right"):
         velocity.x += 100
@@ -59,8 +59,9 @@ func _process(delta):
 
 func _on_Player_body_entered(body):
     if(body.get_name() == "gobboChild"):
-        hide()
-        emit_signal("hit")
+#        hide()
+        var y = stat.stats(0,-1)
+        print(y)
     elif(body.get_name() == "platformChild"):
         velocity.y -= GRAVITY
     else:
