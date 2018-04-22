@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Gobbo.tscn" type="PackedScene" id=2]
@@ -16,6 +16,12 @@ extents = Vector2( 43.5299, 13.54 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 1589.98, 10 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 15.1348
+height = 23.7087
 
 [node name="Main" type="Node" index="0"]
 script = ExtResource( 1 )
@@ -76,7 +82,7 @@ __meta__ = {
 }
 
 [node name="gobboChild" parent="gobbo" index="0" instance=ExtResource( 2 )]
-position = Vector2( 150, 200 )
+position = Vector2( 144.585, 210.83 )
 _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility" ]
 
 [node name="TitleScreen" parent="." index="5" instance=ExtResource( 4 )]
@@ -101,15 +107,7 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( -4.00525, -8.23638 )
 shape = SubResource( 1 )
 
-[node name="Player" parent="." index="7" instance=ExtResource( 6 )]
-position = Vector2( 50, 248 )
-scale = Vector2( 1, 1 )
-collision_layer = 2
-collision_mask = 13
-_sections_unfolded = [ "Audio Bus", "Transform" ]
-SPEED = null
-
-[node name="floor" type="StaticBody2D" parent="." index="8"]
+[node name="floor" type="StaticBody2D" parent="." index="7"]
 position = Vector2( 1129.32, 313.988 )
 input_pickable = false
 collision_layer = 1
@@ -122,5 +120,30 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor" index="0"]
 shape = SubResource( 2 )
 
+[node name="Area2D" type="Area2D" parent="." index="8"]
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="Player" parent="Area2D" index="0" instance=ExtResource( 6 )]
+editor/display_folded = true
+position = Vector2( 50, 248 )
+scale = Vector2( 1, 1 )
+collision_layer = 2
+collision_mask = 9
+_sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform" ]
+SPEED = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
+position = Vector2( 49.2512, 246.991 )
+shape = SubResource( 3 )
+
 [connection signal="start_game" from="TitleScreen" to="." method="new_game"]
-[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="hit" from="Area2D/Player" to="." method="_on_Player_hit"]
+
+[editable path="Area2D/Player"]

@@ -4,7 +4,7 @@ signal hit
 export (int) var SPEED
 
 var screensize
-const GRAVITY = 20
+const GRAVITY = 150
 var velocity = Vector2() # the player's movement vector
 
 var on_air_time = 0
@@ -20,7 +20,7 @@ const WALK_FORCE = 600
 const WALK_MIN_SPEED = 10
 const WALK_MAX_SPEED = 200
 const STOP_FORCE = 1300
-const JUMP_SPEED = 1000
+const JUMP_SPEED = 1500
 const JUMP_MAX_AIRBORNE_TIME = 0.2
 
 const SLIDE_STOP_VELOCITY = 1.0 # one pixel/second
@@ -75,7 +75,7 @@ func _process(delta):
             jumping = false
         #--------------------------------------
         
-        print(velocity)
+        
         #print(on_air_time)
 
         if on_air_time < JUMP_MAX_AIRBORNE_TIME and jump and not prev_jump_pressed and not jumping:
@@ -101,9 +101,9 @@ func _process(delta):
         
         if velocity.x >= 0 && velocity.x < 5 && velocity.y <= 100 && velocity.y > 95:
              $AnimatedSprite.animation = "default"
-        elif velocity.y != 0:
+        elif abs(velocity.y)>5:
             $AnimatedSprite.animation = "up"
-        elif velocity.x != 0:
+        else:
             $AnimatedSprite.animation = "right"
             $AnimatedSprite.flip_v = false
             $AnimatedSprite.flip_h = velocity.x < 0
@@ -111,28 +111,28 @@ func _process(delta):
 
         #velocity.x = 0
 
-func _on_Player_body_entered(body):
-  
-    if(body.get_name() == "gobboChild"):
-#        hide()
-        hp = stat.stats(0,-99)
-        print(hp)
-        $Camera2D/HPBar.set_value(hp)
-    elif(body.get_name() == "platformChild"):
-        velocity.y -= GRAVITY
-    else:
-        print("not gobbo or platform")
-    #$CollisionShape2D.disabled = true
-    if(hp<=0):
-        hide()
-        $CollisionShape2D.disabled = true
-        dead=1
-#func overlaps_body(body):
-#    if(body.get_name() == "platformChild"):
+#func _on_Player_body_entered(body):
+#
+#    if(body.get_name() == "gobboChild"):
+##        hide()
+#        hp = stat.stats(0,-99)
+#        print(hp)
+#        $Camera2D/HPBar.set_value(hp)
+#    elif(body.get_name() == "platformChild"):
 #        velocity.y -= GRAVITY
 #    else:
 #        print("not gobbo or platform")
-#    $CollisionShape2D.disabled = true
+#    #$CollisionShape2D.disabled = true
+#    if(hp<=0):
+#        hide()
+#        $CollisionShape2D.disabled = true
+#        dead=1
+##func overlaps_body(body):
+##    if(body.get_name() == "platformChild"):
+##        velocity.y -= GRAVITY
+##    else:
+##        print("not gobbo or platform")
+##    $CollisionShape2D.disabled = true
     
 func start(pos):
     position = pos

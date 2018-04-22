@@ -25,13 +25,14 @@ animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "up",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 
