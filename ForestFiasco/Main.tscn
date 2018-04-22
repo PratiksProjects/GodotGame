@@ -1,19 +1,29 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Gobbo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://try.png" type="Texture" id=3]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://platform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tile set01.png" type="Texture" id=5]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=6]
 
-[node name="Main" type="Node"]
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 43.5299, 13.54 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1589.98, 10 )
+
+[node name="Main" type="Node" index="0"]
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 Gobbo = ExtResource( 2 )
 platform = null
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Background1" type="Sprite" parent="." index="0"]
 position = Vector2( 79.9153, 83.6334 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
@@ -24,7 +34,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite2" type="Sprite" parent="." index="1"]
+[node name="Background2" type="Sprite" parent="." index="1"]
 position = Vector2( 1101.24, 82.6335 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
@@ -35,7 +45,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite3" type="Sprite" parent="." index="2"]
+[node name="Background3" type="Sprite" parent="." index="2"]
 position = Vector2( 2170.93, 81.27 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
@@ -49,9 +59,6 @@ __meta__ = {
 [node name="StartPosition" type="Position2D" parent="." index="3"]
 position = Vector2( 50, 250 )
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="gobbo" type="Area2D" parent="." index="4"]
 input_pickable = true
@@ -59,6 +66,8 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 4
+collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Audio Bus", "Collision", "Material", "Transform", "Visibility", "Z Index" ]
@@ -72,30 +81,46 @@ _sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform"
 
 [node name="TitleScreen" parent="." index="5" instance=ExtResource( 4 )]
 
-[node name="platform" type="Area2D" parent="." index="6"]
-position = Vector2( 204.998, 251.726 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-priority = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+[node name="platform" type="StaticBody2D" parent="." index="6"]
+position = Vector2( 292.297, 246.644 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 2
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 _sections_unfolded = [ "Audio Bus", "Collision" ]
 
-[node name="platformChild" parent="platform" index="0" instance=ExtResource( 5 )]
-position = Vector2( 479.334, 15.0733 )
-collision_mask = 0
-mode = 3
-mass = 0.01
-gravity_scale = 0.0
-_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear" ]
+[node name="Sprite" type="Sprite" parent="platform" index="0"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform" index="1"]
+position = Vector2( -4.00525, -8.23638 )
+shape = SubResource( 1 )
 
 [node name="Player" parent="." index="7" instance=ExtResource( 6 )]
-position = Vector2( 50, 250 )
+position = Vector2( 50, 248 )
 scale = Vector2( 1, 1 )
-_sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform" ]
+collision_layer = 2
+collision_mask = 13
+_sections_unfolded = [ "Audio Bus", "Transform" ]
+SPEED = null
+
+[node name="floor" type="StaticBody2D" parent="." index="8"]
+position = Vector2( 1129.32, 313.988 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor" index="0"]
+shape = SubResource( 2 )
 
 [connection signal="start_game" from="TitleScreen" to="." method="new_game"]
 [connection signal="hit" from="Player" to="." method="_on_Player_hit"]

@@ -37,7 +37,7 @@ animations = [ {
 
 custom_solver_bias = 0.0
 radius = 10.0
-height = 35.3607
+height = 26.2642
 
 [sub_resource type="StyleBoxFlat" id=3]
 
@@ -151,15 +151,12 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
-[node name="Player" type="Area2D" index="0"]
+[node name="Player" type="KinematicBody2D" index="0"]
 scale = Vector2( 2, 2 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 SPEED = 100
@@ -278,4 +275,3 @@ rounded = false
 percent_visible = true
 _sections_unfolded = [ "Percent", "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
 
-[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
