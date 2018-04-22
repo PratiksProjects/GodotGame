@@ -13,7 +13,7 @@ func _process(delta):
     $Area2D/CollisionShape2D.position=$Area2D/Player.position
 
 func _on_Area2D_body_entered(body):
-    
+    print("hit")
     if(body.get_name() == "gobboChild"):
 #        hide()
         $Area2D/Player.hp = stat.stats(0,-5)
@@ -35,3 +35,4 @@ func _on_Area2D_body_entered(body):
 #        print("not gobbo or platform")
 #    $CollisionShape2D.disabled = true
     
+
