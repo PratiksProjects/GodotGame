@@ -29,7 +29,7 @@ const SLIDE_STOP_MIN_TRAVEL = 1.0 # one pixel
 func _ready():
     screensize = get_viewport_rect().size
     
-    
+#TEST    
 func _process(delta):
     if not dead:
         var force = Vector2(0, GRAVITY)
