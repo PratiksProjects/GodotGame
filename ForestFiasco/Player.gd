@@ -14,6 +14,7 @@ var prev_jump_pressed = false
 var stat = Hpmp.new()
 var dead = false
 var hp = 100
+var mp = 100
 
 const FLOOR_ANGLE_TOLERANCE = 40
 const WALK_FORCE = 600

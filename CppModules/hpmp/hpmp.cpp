@@ -4,8 +4,16 @@
 
 int Hpmp::stats(int type, int delta) {
      
-	if(type==0){hp+=delta; return hp;} 
-	else if(type==1){mp+=delta; return mp;} 
+	if(type==0){
+		hp+=delta; 
+	    hp = hp > 100 ? 100 : hp
+		return hp;
+	} 
+	else if(type==1){
+		mp+=delta; 
+	    mp = mp > 100 ? 100 : mp
+		return mp;
+	} 
 	else{} 
 	 
 }

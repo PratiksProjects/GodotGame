@@ -21,6 +21,18 @@ func _on_Area2D_body_entered(body):
         $Area2D/Player/Camera2D/HPBar.set_value($Area2D/Player.hp)
     elif(body.get_name() == "platformChild"):
          $Area2D/Player.velocity.y -=  $Area2D/Player.GRAVITY
+    elif(body.get_name() == "hppotion"):
+          $Area2D/Player.hp = stat.stats(0,25)
+          $Area2D/Player/Camera2D/HPBar.set_value($Area2D/Player.hp)
+          body.hide()
+          body.set_collision_mask_bit(0,false)
+          print("potion")
+    elif(body.get_name() == "mppotion"):
+          $Area2D/Player.mp = stat.stats(1,25)
+          $Area2D/Player/Camera2D/MPBar.set_value($Area2D/Player.mp)
+          body.hide()
+          body.set_collision_mask_bit(0,false)
+          print($Area2D/Player.mp)    
     else:
         print("not gobbo or platform")
     #$CollisionShape2D.disabled = true

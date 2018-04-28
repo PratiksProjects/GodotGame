@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Gobbo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://try.png" type="Texture" id=3]
-[ext_resource path="res://Gobbo.gd" type="Script" id=4]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://tile set01.png" type="Texture" id=6]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://tile set01.png" type="Texture" id=5]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://hppotion.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mppotion.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -82,22 +83,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="gobboChild" type="Area2D" parent="gobbo" index="0" instance=ExtResource( 2 )]
+[node name="gobboChild" parent="gobbo" index="0" instance=ExtResource( 2 )]
 position = Vector2( 110.29, 276.713 )
 input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision_layer = 4
-collision_mask = 2
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 4 )
-_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility" ]
-speed = null
+_sections_unfolded = [ "Applied Forces", "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility" ]
 
-[node name="TitleScreen" parent="." index="5" instance=ExtResource( 5 )]
+[node name="TitleScreen" parent="." index="5" instance=ExtResource( 4 )]
 
 [node name="platform" type="StaticBody2D" parent="." index="6"]
 position = Vector2( 292.297, 246.644 )
@@ -112,7 +105,7 @@ _sections_unfolded = [ "Audio Bus", "Collision" ]
 
 [node name="Sprite" type="Sprite" parent="platform" index="0"]
 scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform" index="1"]
@@ -144,8 +137,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
 
-[node name="Player" parent="Area2D" index="0" instance=ExtResource( 7 )]
-editor/display_folded = true
+[node name="Player" parent="Area2D" index="0" instance=ExtResource( 6 )]
 position = Vector2( 50, 248 )
 scale = Vector2( 1, 1 )
 collision_layer = 2
@@ -156,6 +148,14 @@ SPEED = null
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
 position = Vector2( 49.2512, 246.991 )
 shape = SubResource( 3 )
+
+[node name="hppotion" parent="." index="9" instance=ExtResource( 7 )]
+position = Vector2( 291.097, 199.211 )
+collision_mask = 3
+
+[node name="mppotion" parent="." index="10" instance=ExtResource( 8 )]
+position = Vector2( 20.5827, 275.66 )
+collision_mask = 3
 
 [connection signal="start_game" from="TitleScreen" to="." method="new_game"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
