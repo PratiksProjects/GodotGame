@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://GobboCenturion.gd" type="Script" id=1]
+[ext_resource path="res://GobboCenturion/0.png" type="Texture" id=2]
+[ext_resource path="res://GobboCenturion/1.png" type="Texture" id=3]
+[ext_resource path="res://GobboCenturion/2.png" type="Texture" id=4]
+[ext_resource path="res://GobboCenturion/3.png" type="Texture" id=5]
+[ext_resource path="res://GobboCenturion/4.png" type="Texture" id=6]
+[ext_resource path="res://GobboCenturion/5.png" type="Texture" id=7]
+[ext_resource path="res://GobboCenturion/6.png" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 11.7547
+height = 20.0
+
+[node name="RigidBody2D" type="RigidBody2D" index="0"]
+input_pickable = false
+collision_layer = 4
+collision_mask = 2
+mode = 3
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Applied Forces", "Collision" ]
+speed = null
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+frames = SubResource( 1 )
+animation = "default"
+playing = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
+position = Vector2( 0.449669, -0.899345 )
+rect = Rect2( -10, -10, 20, 20 )
+

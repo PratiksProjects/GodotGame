@@ -1,6 +1,8 @@
 extends Node
 
 export (PackedScene) var Gobbo
+export (PackedScene) var GobboCenturion
+export (PackedScene) var Shadow
 export (PackedScene) var platform
 var stat = Hpmp.new()
 
@@ -19,6 +21,17 @@ func _on_Area2D_body_entered(body):
         $Area2D/Player.hp = stat.stats(0,-5)
         print($Area2D/Player.hp)
         $Area2D/Player/Camera2D/HPBar.set_value($Area2D/Player.hp)
+    elif(body.get_name() == "gobboCenturionChild"):
+        $Area2D/Player.hp = stat.stats(0,-20)
+        print($Area2D/Player.hp)
+        $Area2D/Player/Camera2D/HPBar.set_value($Area2D/Player.hp)
+    elif(body.get_name() == "shadowChild"):
+        $Area2D/Player.hp = stat.stats(0,-40)
+        $Area2D/Player/Camera2D/HPBar.set_value($Area2D/Player.hp)
+        print($Area2D/Player.hp)
+        $Area2D/Player.mp = stat.stats(1,-10)
+        print($Area2D/Player.mp)
+        $Area2D/Player/Camera2D/MPBar.set_value($Area2D/Player.mp)
     elif(body.get_name() == "platformChild"):
          $Area2D/Player.velocity.y -=  $Area2D/Player.GRAVITY
     elif(body.get_name() == "hppotion"):

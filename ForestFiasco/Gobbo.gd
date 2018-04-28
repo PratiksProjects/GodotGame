@@ -10,7 +10,7 @@ func _ready():
 func _process(delta):
     if (position.x!=null):
         position +=direction
-        if(position.x >= init.x+500 and i == 0):
+        if(position.x >= init.x+100 and i == 0):
             i = 1
             direction=-1*direction
             $AnimatedSprite.flip_h = !$AnimatedSprite.flip_h

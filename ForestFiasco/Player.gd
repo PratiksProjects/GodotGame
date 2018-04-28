@@ -96,7 +96,7 @@ func _process(delta):
 
 
 
-        position.x = clamp(position.x, 0, 2000)
+        position.x = clamp(position.x, 0, 3000)
         #position.y = clamp(position.y, 0, 250)
         velocity.y = clamp(velocity.y, -200, 100)
         
