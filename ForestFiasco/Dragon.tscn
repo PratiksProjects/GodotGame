@@ -48,11 +48,11 @@ playing = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-position = Vector2( 0.79007, 5.53049 )
+position = Vector2( 2.11044, -5.47265 )
 shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
-position = Vector2( 1.23973, 4.63114 )
+position = Vector2( 3.44035, -5.05162 )
 scale = Vector2( 8.66368, 5.74042 )
 rect = Rect2( -10, -10, 20, 20 )
 

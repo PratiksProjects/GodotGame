@@ -13,6 +13,12 @@ func new_game():
     
 func _process(delta):
     $Area2D/CollisionShape2D.position=$Area2D/Player.position
+    $gobbo/CollisionShape2D.position = $gobbo/gobboChild.position
+    $gobboCenturion/CollisionShape2D.position = $gobboCenturion/gobboCenturionChild.position
+    $shadow/CollisionShape2D.position = $shadow/shadowChild.position
+    $dragon/CollisionShape2D.position = $dragon/dragonChild.position
+    
+    # need one for every new mob
 
 func _on_Area2D_body_entered(body):
     print("hit")
@@ -47,17 +53,49 @@ func _on_Area2D_body_entered(body):
           body.set_collision_mask_bit(0,false)
           print($Area2D/Player.mp)    
     else:
-        print("not gobbo or platform")
-    #$CollisionShape2D.disabled = true
+        print("collision not recognized")
+        
     if( $Area2D/Player.hp<=0):
         $Area2D/Player.hide()
         $Area2D/CollisionShape2D.disabled = true
         $Area2D/Player.dead=1
-#func overlaps_body(body):
-#    if(body.get_name() == "platformChild"):
-#        velocity.y -= GRAVITY
-#    else:
-#        print("not gobbo or platform")
-#    $CollisionShape2D.disabled = true
+
     
+func _on_gobbo_body_shape_entered(body_id, body, body_shape, area_shape):
+    if body_id != 1201: 
+        print("Killed gobbo")
+        $gobbo/gobboChild.hide()
+        $gobbo/gobboChild/CollisionShape2D.disabled = true
+        $gobbo/CollisionShape2D.disabled = true
+        body.hide()
+        body.no_collision()
+
+func _on_gobboCenturion_body_shape_entered(body_id, body, body_shape, area_shape):
+    if body_id != 1201:
+        print("Killed gobbo centurion")
+        $gobboCenturion/gobboCenturionChild.hide()
+        $gobboCenturion/gobboCenturionChild/CollisionShape2D.disabled = true
+        $gobboCenturion/CollisionShape2D.disabled = true
+        body.hide()
+        body.no_collision()
+
+func _on_shadow_body_shape_entered(body_id, body, body_shape, area_shape):
+    if body_id != 1201: 
+        print("Killed shadow")
+        $shadow/shadowChild.hide()
+        $shadow/shadowChild/CollisionShape2D.disabled = true
+        $shadow/CollisionShape2D.disabled = true
+        body.hide()
+        body.no_collision()
+
+func _on_dragon_body_shape_entered(body_id, body, body_shape, area_shape):
+    if body_id != 1201: 
+        print("Killed dragon")
+        $dragon/dragonChild.hide()
+        $dragon/dragonChild/CollisionShape2D.disabled = true
+        $dragon/CollisionShape2D.disabled = true
+        body.hide()
+        body.no_collision()
+
+# also need one for every new mob
 

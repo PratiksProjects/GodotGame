@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Gobbo.tscn" type="PackedScene" id=2]
@@ -27,6 +27,29 @@ extents = Vector2( 2640.48, 10 )
 custom_solver_bias = 0.0
 radius = 15.1348
 height = 23.7087
+
+[sub_resource type="CapsuleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 14.5596
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id=5]
+
+custom_solver_bias = 0.0
+radius = 9.33539
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id=6]
+
+custom_solver_bias = 0.0
+radius = 13.7744
+height = 20.0
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 180.859, 106.665 )
 
 [node name="Main" type="Node" index="0"]
 script = ExtResource( 1 )
@@ -81,34 +104,10 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform",
 position = Vector2( 50, 250 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="gobbo" type="Area2D" parent="." index="5"]
+[node name="TitleScreen" parent="." index="5" instance=ExtResource( 4 )]
+
+[node name="platform" type="StaticBody2D" parent="." index="6"]
 editor/display_folded = true
-position = Vector2( 259.508, 11.7292 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 4
-collision_mask = 0
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Audio Bus", "Collision", "Material", "Transform", "Visibility", "Z Index" ]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="gobboChild" parent="gobbo" index="0" instance=ExtResource( 2 )]
-position = Vector2( 432.446, 272.336 )
-input_pickable = true
-collision_mask = 3
-linear_damp = 0.1
-angular_damp = 1.0
-_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Material", "Pause", "Pickable", "Transform", "Visibility" ]
-
-[node name="TitleScreen" parent="." index="6" instance=ExtResource( 4 )]
-
-[node name="platform" type="StaticBody2D" parent="." index="7"]
 position = Vector2( 257.857, 264.017 )
 input_pickable = false
 collision_layer = 1
@@ -128,7 +127,7 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( -4.00525, -8.23638 )
 shape = SubResource( 1 )
 
-[node name="platform2" type="StaticBody2D" parent="." index="8"]
+[node name="platform2" type="StaticBody2D" parent="." index="7"]
 editor/display_folded = true
 position = Vector2( 365.314, 223.32 )
 input_pickable = false
@@ -149,7 +148,7 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( -4.00525, -8.23638 )
 shape = SubResource( 1 )
 
-[node name="platform3" type="StaticBody2D" parent="." index="9"]
+[node name="platform3" type="StaticBody2D" parent="." index="8"]
 editor/display_folded = true
 position = Vector2( 464.977, 194.92 )
 input_pickable = false
@@ -170,7 +169,7 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( -4.00525, -8.23638 )
 shape = SubResource( 1 )
 
-[node name="platform4" type="StaticBody2D" parent="." index="10"]
+[node name="platform4" type="StaticBody2D" parent="." index="9"]
 editor/display_folded = true
 position = Vector2( 551.166, 194.92 )
 input_pickable = false
@@ -191,7 +190,7 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( -4.00525, -8.23638 )
 shape = SubResource( 1 )
 
-[node name="platform5" type="StaticBody2D" parent="." index="11"]
+[node name="platform5" type="StaticBody2D" parent="." index="10"]
 editor/display_folded = true
 position = Vector2( 637.355, 194.92 )
 input_pickable = false
@@ -212,7 +211,7 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( -4.00525, -8.23638 )
 shape = SubResource( 1 )
 
-[node name="floor" type="StaticBody2D" parent="." index="12"]
+[node name="floor" type="StaticBody2D" parent="." index="11"]
 editor/display_folded = true
 position = Vector2( 1129.32, 313.988 )
 input_pickable = false
@@ -226,7 +225,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor" index="0"]
 shape = SubResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="." index="13"]
+[node name="Area2D" type="Area2D" parent="." index="12"]
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -239,51 +238,94 @@ audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
 
 [node name="Player" parent="Area2D" index="0" instance=ExtResource( 6 )]
+editor/display_folded = true
 position = Vector2( 50, 248 )
 scale = Vector2( 1, 1 )
 collision_layer = 2
 collision_mask = 13
 _sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform" ]
 SPEED = null
+fireball_angle = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
 position = Vector2( 49.2512, 246.991 )
 shape = SubResource( 3 )
 
-[node name="hppotion" parent="." index="14" instance=ExtResource( 7 )]
+[node name="hppotion" parent="." index="13" instance=ExtResource( 7 )]
 position = Vector2( 1729.91, 285.846 )
 collision_mask = 3
 
-[node name="mppotion" parent="." index="15" instance=ExtResource( 8 )]
+[node name="mppotion" parent="." index="14" instance=ExtResource( 8 )]
 position = Vector2( 1831.49, 286.893 )
 collision_mask = 3
 
+[node name="gobbo" type="Area2D" parent="." index="15"]
+position = Vector2( 259.508, 11.7292 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 4
+collision_mask = 18
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Audio Bus", "Collision", "Material", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="gobboChild" parent="gobbo" index="0" instance=ExtResource( 2 )]
+position = Vector2( 432.446, 272.336 )
+input_pickable = true
+collision_mask = 19
+linear_damp = 0.1
+angular_damp = 1.0
+_sections_unfolded = [ "Angular", "Applied Forces", "Collision", "Linear", "Material", "Pause", "Pickable", "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gobbo" index="1"]
+position = Vector2( 433.008, 271.413 )
+shape = SubResource( 4 )
+
 [node name="gobboCenturion" type="Area2D" parent="." index="16"]
-editor/display_folded = true
 position = Vector2( 551.814, 152.938 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 4
+collision_mask = 18
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="gobboCenturionChild" parent="gobboCenturion" index="0" instance=ExtResource( 9 )]
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gobboCenturion" index="1"]
+shape = SubResource( 5 )
 
 [node name="shadow" type="Area2D" parent="." index="17"]
-editor/display_folded = true
 position = Vector2( 973.083, 273.739 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 4
+collision_mask = 18
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="shadowChild" parent="shadow" index="0" instance=ExtResource( 10 )]
 position = Vector2( 0, -4.53168 )
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shadow" index="1"]
+position = Vector2( 6.16858, 11.6945 )
+shape = SubResource( 6 )
 
 [node name="dragon" type="Area2D" parent="." index="18"]
 input_pickable = true
@@ -291,16 +333,31 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_layer = 4
+collision_mask = 18
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="dragonChild" parent="dragon" index="0" instance=ExtResource( 11 )]
-position = Vector2( 2038.12, 199.85 )
+position = Vector2( 2039, 194.128 )
 scale = Vector2( 2, 2 )
+collision_mask = 18
 _sections_unfolded = [ "Applied Forces", "Collision", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dragon" index="1"]
+position = Vector2( 2043.44, 191.188 )
+shape = SubResource( 7 )
 
 [connection signal="start_game" from="TitleScreen" to="." method="new_game"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="hit" from="Area2D/Player" to="." method="_on_Player_hit"]
+[connection signal="body_shape_entered" from="gobbo" to="." method="_on_gobbo_body_shape_entered"]
+[connection signal="body_shape_entered" from="gobboCenturion" to="." method="_on_gobboCenturion_body_shape_entered"]
+[connection signal="body_shape_entered" from="shadow" to="." method="_on_shadow_body_shape_entered"]
+[connection signal="body_shape_entered" from="dragon" to="." method="_on_dragon_body_shape_entered"]
 
 [editable path="Area2D/Player"]

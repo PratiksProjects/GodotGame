@@ -1,35 +1,41 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://Sprite Individual/1.png" type="Texture" id=2]
-[ext_resource path="res://Sprite Individual/2.png" type="Texture" id=3]
-[ext_resource path="res://Sprite Individual/3.png" type="Texture" id=4]
-[ext_resource path="res://Sprite Individual/5.png" type="Texture" id=5]
-[ext_resource path="res://Sprite Individual/6.png" type="Texture" id=6]
-[ext_resource path="res://Sprite Individual/4.png" type="Texture" id=7]
-[ext_resource path="res://Sprite Individual/7.png" type="Texture" id=8]
-[ext_resource path="res://Sprite Individual/8.png" type="Texture" id=9]
-[ext_resource path="res://Sprite Individual/9.png" type="Texture" id=10]
-[ext_resource path="res://Sprite Individual/10.png" type="Texture" id=11]
-[ext_resource path="res://Sprite Individual/0.png" type="Texture" id=12]
-[ext_resource path="res://CollisionShape2D.gd" type="Script" id=13]
+[ext_resource path="res://projectile_scene.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprite Individual/1.png" type="Texture" id=3]
+[ext_resource path="res://Sprite Individual/2.png" type="Texture" id=4]
+[ext_resource path="res://Sprite Individual/3.png" type="Texture" id=5]
+[ext_resource path="res://Sprite Individual/5.png" type="Texture" id=6]
+[ext_resource path="res://Sprite Individual/6.png" type="Texture" id=7]
+[ext_resource path="res://Sprite Individual/4.png" type="Texture" id=8]
+[ext_resource path="res://Sprite Individual/7.png" type="Texture" id=9]
+[ext_resource path="res://Sprite Individual/8.png" type="Texture" id=10]
+[ext_resource path="res://Sprite Individual/9.png" type="Texture" id=11]
+[ext_resource path="res://Sprite Individual/10.png" type="Texture" id=12]
+[ext_resource path="res://Sprite Individual/0.png" type="Texture" id=13]
+[ext_resource path="res://Sprite Individual/14.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "up",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "attack",
 "speed": 5.0
 } ]
 _sections_unfolded = [ "Resource" ]
@@ -161,6 +167,11 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 SPEED = 100
+projectile_scene = ExtResource( 2 )
+fireball_spawn_path = NodePath("fireball_spawn")
+fireball_angle = 350.0
+fireball_speed = 50
+fireball_gravity = 0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 1 )
@@ -169,7 +180,6 @@ _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 2 )
-script = ExtResource( 13 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 position = Vector2( 0, -170 )
@@ -275,4 +285,6 @@ exp_edit = false
 rounded = false
 percent_visible = true
 _sections_unfolded = [ "Percent", "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="fireball_spawn" type="Position2D" parent="." index="3"]
 
