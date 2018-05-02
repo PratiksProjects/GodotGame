@@ -16,6 +16,7 @@ protected:
 public:
     
 	int stats (int type, int delta);
+	void update(int newhp, int newmp);
     
     Hpmp();
 };

@@ -24,5 +24,5 @@ func _process(delta):
     
     $AnimatedSprite.flip_h = (velocity.x > 0)
     position += velocity * delta
-    if position.x > 2000 or position.x < 0: # disappears offscreen
+    if position.x > 4000 or position.x < 0: # disappears offscreen
         hide()

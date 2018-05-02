@@ -4,17 +4,17 @@ signal hit
 export (int) var SPEED # unused exported variable
 
 var screensize
-const GRAVITY = 125
+const GRAVITY = 75
 var velocity = Vector2() # the player's movement vector
 
 var on_air_time = 0
 var jumping = false
 var prev_jump_pressed = false
 
-var stat = Hpmp.new()
 var dead = false
 var hp = 100
 var mp = 100
+var spellscast = 0
 
 const ATTACK_CD = 2 #attack once per 2 second
 var cd_timer = 0
@@ -125,7 +125,15 @@ func _process(delta):
             $AnimatedSprite.flip_h = velocity.x < 0
         if attack:
             cd_timer = 0
-            shoot()
+            
+            # fireball costs mana
+            if mp >= 20:
+                shoot()
+                spellscast += 1
+                mp -= 20
+            else:
+                print("out of mana!")
+            
             $AnimatedSprite.animation = "attack"    
             $AnimatedSprite.flip_h = velocity.x < 0
         

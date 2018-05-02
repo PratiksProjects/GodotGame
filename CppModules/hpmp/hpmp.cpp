@@ -18,10 +18,16 @@ int Hpmp::stats(int type, int delta) {
 	 
 }
 
+void Hpmp::update(int newhp, int newmp) {
+	hp = newhp;
+	mp = newmp;
+}
+
 
 void Hpmp::_bind_methods() {
 
     ClassDB::bind_method(D_METHOD("stats", "type","delta"), &Hpmp::stats);
+    ClassDB::bind_method(D_METHOD("update", "newhp","newmp"), &Hpmp::update);
     
 }
 

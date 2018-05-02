@@ -6,7 +6,21 @@ var init
 func _ready():
     $AnimatedSprite.animation = "default"
     init = position
-    $AnimatedSprite.flip_h = !$AnimatedSprite.flip_h
+    
+func _process(delta):
+    if (position.x!=null):
+        position +=direction
+        if(position.x >= init.x+150 and i == 0):
+            i = 1
+            direction=-1*direction
+            $AnimatedSprite.flip_h = !$AnimatedSprite.flip_h
+        else:
+            if(position.x <= init.x-100 and i == 1):
+                i = 0
+                direction=-1*direction
+                $AnimatedSprite.flip_h = !$AnimatedSprite.flip_h
+            else:
+                position += direction
 
 func _on_Visibility_screen_exited():
     queue_free()

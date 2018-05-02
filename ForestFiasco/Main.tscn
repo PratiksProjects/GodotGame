@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Gobbo.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://GobboCenturion.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Shadow.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Dragon.tscn" type="PackedScene" id=11]
+[ext_resource path="res://treasure.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -49,7 +50,7 @@ height = 20.0
 [sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
-extents = Vector2( 180.859, 106.665 )
+extents = Vector2( 45.1609, 15.3965 )
 
 [node name="Main" type="Node" index="0"]
 script = ExtResource( 1 )
@@ -236,9 +237,11 @@ collision_mask = 4
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Collision" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Player" parent="Area2D" index="0" instance=ExtResource( 6 )]
-editor/display_folded = true
 position = Vector2( 50, 248 )
 scale = Vector2( 1, 1 )
 collision_layer = 2
@@ -252,14 +255,15 @@ position = Vector2( 49.2512, 246.991 )
 shape = SubResource( 3 )
 
 [node name="hppotion" parent="." index="13" instance=ExtResource( 7 )]
-position = Vector2( 1729.91, 285.846 )
+position = Vector2( 1730.99, 280.11 )
 collision_mask = 3
 
 [node name="mppotion" parent="." index="14" instance=ExtResource( 8 )]
-position = Vector2( 1831.49, 286.893 )
+position = Vector2( 1830.77, 283.308 )
 collision_mask = 3
 
 [node name="gobbo" type="Area2D" parent="." index="15"]
+editor/display_folded = true
 position = Vector2( 259.508, 11.7292 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -288,6 +292,7 @@ position = Vector2( 433.008, 271.413 )
 shape = SubResource( 4 )
 
 [node name="gobboCenturion" type="Area2D" parent="." index="16"]
+editor/display_folded = true
 position = Vector2( 551.814, 152.938 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -307,6 +312,7 @@ collision_mask = 19
 shape = SubResource( 5 )
 
 [node name="shadow" type="Area2D" parent="." index="17"]
+editor/display_folded = true
 position = Vector2( 973.083, 273.739 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -343,14 +349,17 @@ __meta__ = {
 }
 
 [node name="dragonChild" parent="dragon" index="0" instance=ExtResource( 11 )]
-position = Vector2( 2039, 194.128 )
+position = Vector2( 2284.52, 194.863 )
 scale = Vector2( 2, 2 )
 collision_mask = 18
 _sections_unfolded = [ "Applied Forces", "Collision", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dragon" index="1"]
-position = Vector2( 2043.44, 191.188 )
+position = Vector2( 2283.81, 195.599 )
 shape = SubResource( 7 )
+
+[node name="treasure" parent="." index="19" instance=ExtResource( 12 )]
+position = Vector2( 2207.49, 275.022 )
 
 [connection signal="start_game" from="TitleScreen" to="." method="new_game"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
